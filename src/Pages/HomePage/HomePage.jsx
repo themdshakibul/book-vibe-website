@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Heder from "../../Components/HomePage/Heder";
 
 function HomePage() {
   return (
-    <div>HomePage</div>
-  )
+    <frames>
+      <Heder />
+    </frames>
+  );
 }
 
-export default HomePage
+export default HomePage;

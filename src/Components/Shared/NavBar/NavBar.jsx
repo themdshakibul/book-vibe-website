@@ -2,9 +2,44 @@ import React from "react";
 import { NavLink } from "react-router";
 
 function NavBar() {
+  const links = (
+    <frames className="flex flex-col lg:flex-row items-center gap-5 font-semibold">
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "border-b-2 border-success" : ""
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/books"
+          className={({ isActive }) =>
+            isActive ? "border-b-2 border-success" : ""
+          }
+        >
+          Listed Books
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/jjskjks"
+          className={({ isActive }) =>
+            isActive ? "border-b-2 border-success" : ""
+          }
+        >
+          Pages to Read
+        </NavLink>
+      </li>
+    </frames>
+  );
+
   return (
-    <section>
-      <div className="navbar bg-base-100 shadow-sm">
+    <section className="bg-base-100 shadow-sm">
+      <div className="navbar container mx-auto px-2">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -26,25 +61,19 @@ function NavBar() {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-5"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/books">Listed Books</NavLink>
-              <NavLink to="">Pages to Read</NavLink>
+              {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Book Vibe</a>
+          <a className="text-2xl font-bold">Book Vibe</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-10">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/books">Listed Books</NavLink>
-            <NavLink to="">Pages to Read</NavLink>
-          </ul>
+          <ul className="menu menu-horizontal">{links}</ul>
         </div>
         <div className="navbar-end gap-5">
-          <a className="btn btn-success">Sign In</a>
-          <a className="btn btn-accent">Sign Up</a>
+          <a className="btn btn-success text-white">Sign In</a>
+          <a className="btn btn-accent text-white">Sign Up</a>
         </div>
       </div>
     </section>
