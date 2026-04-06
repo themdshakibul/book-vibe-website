@@ -1,11 +1,13 @@
 import React from "react";
 import { FaRegStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const BookCard = ({ book }) => {
   return (
     <>
       <section>
-        <div
+        <Link
+          to={`/bookdetails/${book.bookId}`}
           key={book.bookId}
           className="flex flex-col h-full space-y-5 p-5 bg-base-300 border border-gray-300 rounded-2xl 
              transition-all duration-300 ease-in-out hover:-translate-y-3 hover:shadow-2xl hover:border-success
@@ -45,7 +47,7 @@ const BookCard = ({ book }) => {
               </p>
             </div>
           </div>
-        </div>
+        </Link>
       </section>
     </>
   );
