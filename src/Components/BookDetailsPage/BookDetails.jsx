@@ -21,8 +21,8 @@ const BookDetails = () => {
     yearOfPublishing,
   } = expectedBook;
 
-  const { handelMarkRead, storedBooks } = useContext(BookContext);
-  console.log(handelMarkRead, storedBooks, "handelMarkRead");
+  const { handelMarkRead, handelWishList } = useContext(BookContext);
+  console.log(handelMarkRead, handelWishList, "handelMarkRead");
 
   return (
     <section>
@@ -101,7 +101,10 @@ const BookDetails = () => {
             >
               Mark as Read
             </button>
-            <button className="btn btn-info text-white px-8">
+            <button
+              onClick={() => handelWishList(expectedBook)}
+              className="btn btn-info text-white px-8"
+            >
               Add to Wishlist
             </button>
           </div>

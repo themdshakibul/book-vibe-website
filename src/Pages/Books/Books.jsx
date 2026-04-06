@@ -2,10 +2,16 @@ import React, { useContext } from "react";
 import { BookContext } from "../../Context/BookProveider";
 
 function Books() {
-  const { storedBooks } = useContext(BookContext);
-  console.log(storedBooks);
+  const { storedBooks, wishList } = useContext(BookContext);
 
-  return <div>Books</div>;
+  return (
+    <section>
+      <div>
+        Read List : {storedBooks.length}
+        Wish List : {wishList.length}
+      </div>
+    </section>
+  );
 }
 
 export default Books;
