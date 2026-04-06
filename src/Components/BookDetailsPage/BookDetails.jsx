@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useParams } from "react-router";
+import { BookContext } from "../../Context/BookProveider";
 
 const BookDetails = () => {
   const { bookId } = useParams();
-  console.log(bookId);
 
   const books = useLoaderData();
-  console.log(books);
+
   const expectedBook = books.find((book) => book.bookId === Number(bookId));
   const {
     bookName,
@@ -20,6 +20,9 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
   } = expectedBook;
+
+  const { handelMarkRead, storedBooks } = useContext(BookContext);
+  console.log(handelMarkRead, storedBooks, "handelMarkRead");
 
   return (
     <section>
@@ -92,10 +95,15 @@ const BookDetails = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <button className="btn btn-outline border-gray-300 hover:bg-neutral hover:text-white px-8">
+            <button
+              onClick={() => handelMarkRead(expectedBook)}
+              className="btn btn-outline border-gray-300 hover:bg-neutral hover:text-white px-8"
+            >
               Mark as Read
             </button>
-            <button className="btn btn-info text-white px-8">Add to Wishlist</button>
+            <button className="btn btn-info text-white px-8">
+              Add to Wishlist
+            </button>
           </div>
         </div>
       </div>
