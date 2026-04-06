@@ -3,7 +3,8 @@ import MainLayout from "../Layout/MainLayout.";
 import HomePage from "../Pages/HomePage/HomePage";
 import Books from "../Pages/Books/Books";
 import ErrorPage from "../Pages/ErroPages/ErrorPage";
-import BookDetails from "../Components/BookDetailsPage/BookDetails";
+import BookDetails from "../Pages/BookDetailsPage/BookDetails";
+
 
 export const route = createBrowserRouter([
   {
