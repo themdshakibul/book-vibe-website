@@ -1,13 +1,17 @@
 import { Children, createContext, useState } from "react";
 import { toast } from "react-toastify";
-import { addReadListToLocalDB, getAllReadListFormLocalDB } from "../Utils/LoaclDB";
+import {
+  addReadListToLocalDB,
+  getAllReadListFormLocalDB,
+  getAllWishListFormLocalDB,
+} from "../Utils/LoaclDB";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const BookContext = createContext();
 
 const BookProveider = ({ children }) => {
   const [readList, setReadList] = useState(() => getAllReadListFormLocalDB());
-  const [wishList, setWishList] = useState([]);
+  const [wishList, setWishList] = useState(() => getAllWishListFormLocalDB());
 
   const handelMarkRead = (currentBook) => {
     // Step 1 : Store bookId or store book Objects

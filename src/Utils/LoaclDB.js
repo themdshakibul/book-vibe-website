@@ -23,5 +23,31 @@ const addReadListToLocalDB = (books) => {
   }
 };
 
+// Add Wish list
+
+const getAllWishListFormLocalDB = () => {
+  const allWishList = localStorage.getItem("wishlist");
+  if (allWishList) {
+    return JSON.parse(allWishList); // data gula ke jeson a convart kore
+  }
+  return [];
+};
+
+const addWishListFormLocalDB = (wish) => {
+  const allwish = getAllWishListFormLocalDB();
+
+  const isAlradyExist = allwish.find((wh) => wh.bookId === wish.bookId);
+
+  if (!isAlradyExist) {
+    allwish.push(wish);
+    localStorage.setItem("wishlist", JSON.stringify(allwish));
+  }
+};
+
 // export file
-export { getAllReadListFormLocalDB, addReadListToLocalDB };
+export {
+  getAllReadListFormLocalDB,
+  addReadListToLocalDB,
+  getAllWishListFormLocalDB,
+  addWishListFormLocalDB,
+};
