@@ -1,11 +1,12 @@
 import { Children, createContext, useState } from "react";
 import { toast } from "react-toastify";
+import { addReadListToLocalDB, getAllReadListFormLocalDB } from "../Utils/LoaclDB";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const BookContext = createContext();
 
 const BookProveider = ({ children }) => {
-  const [readList, setReadList] = useState([]);
+  const [readList, setReadList] = useState(() => getAllReadListFormLocalDB());
   const [wishList, setWishList] = useState([]);
 
   const handelMarkRead = (currentBook) => {
@@ -14,6 +15,8 @@ const BookProveider = ({ children }) => {
     // Step 3 : array or collection
     // Step 4 : if the book is alrady exist then show a alart toast
     // Step 5 : if not then add the book in the array or collection
+
+    addReadListToLocalDB(currentBook);
 
     const isExistingBook = readList.find(
       (book) => book.bookId === currentBook.bookId,
@@ -25,7 +28,6 @@ const BookProveider = ({ children }) => {
       setReadList([...readList, currentBook]);
       toast.success(`${currentBook.bookName} is added to Read list`);
     }
-    console.log(currentBook, readList, "Book");
   };
 
   const handelWishList = (currentBook) => {
